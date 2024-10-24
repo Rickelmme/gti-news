@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Noticia;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -56,10 +57,9 @@ Route::get('/logout',
     }
 )->name('logout');
 
-
-
-
-
-
-
-
+Route::get('/gerencia-noticias',
+    function() {
+        $noticias = Noticia::all();
+        return view('gerencia-noticias', compact('noticias'));
+    }
+)->name('gerenciaNoticias');
